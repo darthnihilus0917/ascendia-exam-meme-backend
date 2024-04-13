@@ -33,7 +33,7 @@ describe('Environment variable', () => {
 });
 
 // 2. Read meme image json from the meme URL
-export async function readMemeImageJson(): Promise<any> {
+async function readMemeImageJson(): Promise<any> {
     const memeUrl = `${process.env.MEME_URL}`;
     if (!memeUrl) {
         throw new Error('MEME_URL environment variable not set');
@@ -122,6 +122,7 @@ async function fetchMemes(): Promise<any[]> {
     const response = await axios.get(memeUrl);
     return response.data.memes;
 }
+
 describe('Total number of images returned', () => {
     it('should return the total number of images', async () => {
         const mockedResponse = {
@@ -145,6 +146,7 @@ describe('Total number of images returned', () => {
 function filterMemesByName(memes: any[], keyword: string): any[] {
     return memes.filter(meme => meme.name.toLowerCase().includes(keyword.toLowerCase()));
 }
+
 describe('Number of images where the name contains the word "The"', () => {
     it('should return the number of images with the keyword in the name', async () => {
         const mockedResponse = {
@@ -234,6 +236,7 @@ function logFileLocations(encryptedJsonPath: string, imagePath: string): void {
     console.log(`Encrypted meme JSON file location: ${encryptedJsonPath}`);
     console.log(`Meme image file location: ${imagePath}`);
 }
+
 describe('Log file locations', () => {
     it('should log the file locations to the console', () => {
         const consoleSpy = jest.spyOn(console, 'log');
