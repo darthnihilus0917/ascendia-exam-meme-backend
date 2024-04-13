@@ -87,6 +87,7 @@ describe('Encrypt meme image JSON', () => {
 function cacheEncryptedMemeImageJson(encryptedData: string, filePath: string): void {
     fs.writeFileSync(filePath, encryptedData);
 }
+
 describe('Cache encrypted meme image JSON', () => {
     let tmpFile: tmp.FileResult;
 
